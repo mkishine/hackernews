@@ -16,7 +16,7 @@ const list = [
     },
 ];
 
-const isSearched = (query) => (item) => !query|| item.title.indexOf(query) !== -1;
+const isSearched = (query) => (item) => !query || item.title.indexOf(query) !== -1;
 
 class App extends Component {
     constructor(props) {
@@ -31,14 +31,35 @@ class App extends Component {
     onSearchChange(event) {
         this.setState({query: event.target.value});
     }
+
     render() {
         const {query, list} = this.state;
         return (
             <div className="App">
-                <form>
-                    <input type="text" value={query} onChange={this.onSearchChange}/>
-                </form>
-                {list.filter(isSearched(query)).map(item =>
+                <Search value={query} onChange={this.onSearchChange}/>
+                <Table list={list} pattern={query}/>
+            </div>
+        );
+    }
+}
+
+class Search extends Component {
+    render() {
+        const {value, onChange} = this.props;
+        return (
+            <form>
+                <input type="text" value={value} onChange={onChange}/>
+            </form>
+        );
+    }
+}
+
+class Table extends Component {
+    render() {
+        const {list, pattern} = this.props;
+        return (
+            <div>
+                {list.filter(isSearched(pattern)).map(item =>
                     <div key={item.objectId}>
                         <span><a href={item.url}>{item.title}</a></span>
                         <span>{item.author}</span>
