@@ -3,7 +3,7 @@
   "name": "Create React App Sample",
   "icons": [
     {
-      "src": "JesterHat.PNG",
+      "src": "JesterHat.PNG"
     }
   ],
   "start_url": ".",
