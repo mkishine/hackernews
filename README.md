@@ -1,3 +1,8 @@
+[Notes on using children property](https://codeburst.io/a-quick-intro-to-reacts-props-children-cb3d2fce4891)
+
+---
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
