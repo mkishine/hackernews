@@ -45,31 +45,26 @@ class App extends Component {
     }
 }
 
-class Search extends Component {
-    render() {
-        const {value, onChange, children} = this.props;
-        return (
-            <form>
-                {children} <input type="text" value={value} onChange={onChange}/>
-            </form>
-        );
-    }
-}
+const Search = ({value, onChange, children}) => {
+    // add necessary code here
+    return (
+        <form>
+            {children} <input type="text" value={value} onChange={onChange}/>
+        </form>
+    );
+};
 
-class Table extends Component {
-    render() {
-        const {list, pattern} = this.props;
-        return (
-            <div>
-                {list.filter(isSearched(pattern)).map(item =>
-                    <div key={item.objectId}>
-                        <span><a href={item.url}>{item.title}</a></span>
-                        <span>{item.author}</span>
-                    </div>
-                )}
-            </div>
-        );
-    }
-}
+const Table = ({list, pattern}) => {
+    return (
+        <div>
+            {list.filter(isSearched(pattern)).map(item =>
+                <div key={item.objectId}>
+                    <span><a href={item.url}>{item.title}</a></span>
+                    <span>{item.author}</span>
+                </div>
+            )}
+        </div>
+    );
+};
 
 export default App;
