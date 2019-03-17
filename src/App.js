@@ -36,7 +36,9 @@ class App extends Component {
         const {query, list} = this.state;
         return (
             <div className="App">
-                <Search value={query} onChange={this.onSearchChange}/>
+                <Search value={query} onChange={this.onSearchChange}>
+                    Filter items by entering a search pattern:
+                </Search>
                 <Table list={list} pattern={query}/>
             </div>
         );
@@ -45,10 +47,10 @@ class App extends Component {
 
 class Search extends Component {
     render() {
-        const {value, onChange} = this.props;
+        const {value, onChange, children} = this.props;
         return (
             <form>
-                <input type="text" value={value} onChange={onChange}/>
+                {children} <input type="text" value={value} onChange={onChange}/>
             </form>
         );
     }
