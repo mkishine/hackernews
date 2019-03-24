@@ -35,10 +35,12 @@ class App extends Component {
     render() {
         const {query, list} = this.state;
         return (
-            <div className="App">
-                <Search value={query} onChange={this.onSearchChange}>
-                    Filter items by entering a search pattern:
-                </Search>
+            <div className="page">
+                <div className="interactions">
+                    <Search value={query} onChange={this.onSearchChange}>
+                        Filter items by entering a search pattern:
+                    </Search>
+                </div>
                 <Table list={list} pattern={query}/>
             </div>
         );
@@ -56,9 +58,9 @@ const Search = ({value, onChange, children}) => {
 
 const Table = ({list, pattern}) => {
     return (
-        <div>
+        <div className="table">
             {list.filter(isSearched(pattern)).map(item =>
-                <div key={item.objectId}>
+                <div key={item.objectId} className="table-row">
                     <span><a href={item.url}>{item.title}</a></span>
                     <span>{item.author}</span>
                 </div>
